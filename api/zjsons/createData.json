@@ -1,0 +1,327 @@
+{
+  "date_of_issue": "2024-09-17T20:00:00+00:00",
+  "date_due": "2024-10-01T20:00:00+00:00",
+  "bill_from": "Company A",
+  "bill_from_address_line_1": "123 Main St",
+  "bill_from_postal_code": "10001",
+  "bill_from_city": "Metropolis",
+  "bill_from_country": "USA",
+  "bill_from_email": "contact@companya.com",
+  "bill_from_phone": "+1-555-1234",
+  "bill_to": "Company B",
+  "bill_to_address_line_1": "456 Elm St",
+  "bill_to_postal_code": "10002",
+  "bill_to_city": "Gotham",
+  "bill_to_country": "USA",
+  "bill_to_email": "billing@companyb.com",
+  "bill_to_phone": "+1-555-5678",
+  "discount": "20%",
+  "total": "2400.00",
+  "amount_due": "2400.00",
+  "currency": "USD",
+  "paidmanual": true,
+  "thankyou_note": "HALALUIYAAA",
+  "items": [
+    {
+      "description": "Consulting Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    }
+  ]
+}
+
+
+  <div>
+                                {activeTab === "bill_from" ||
+                                invoiceType === "stripe" ? (
+                                  <motion.div
+                                    key="bill_from"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.3 }}
+                                  >
+                                    <div>
+                                      <div className="mb-4">
+                                        <label
+                                          htmlFor="bill_from"
+                                          className="block text-sm font-medium text-gray-700"
+                                        >
+                                          Select Bill From Address
+                                        </label>
+                                        <select
+                                          id="bill_from"
+                                          value={
+                                            tempEditValues?.bill_from || ""
+                                          }
+                                          onChange={(e) => {
+                                            const selectedValue =
+                                              e.target.value;
+                                            if (selectedValue === "") {
+                                              setTempEditValues((prevValues) =>
+                                                prevValues
+                                                  ? {
+                                                      ...prevValues,
+                                                      bill_from: "",
+                                                      bill_from_address_line_1:
+                                                        "",
+                                                      bill_from_address_line_2:
+                                                        "",
+                                                      bill_from_city: "",
+                                                      bill_from_state: "",
+                                                      bill_from_postal_code: "",
+                                                      bill_from_country: "",
+                                                      bill_from_email: "",
+                                                      bill_from_phone: "",
+                                                    }
+                                                  : null,
+                                              );
+                                              return;
+                                            }
+
+                                            const selectedAddress =
+                                              addresses.find(
+                                                (address) =>
+                                                  address.bill_from ===
+                                                  selectedValue,
+                                              );
+                                            if (selectedAddress) {
+                                              setTempEditValues((prevValues) =>
+                                                prevValues
+                                                  ? {
+                                                      ...prevValues,
+                                                      bill_from:
+                                                        selectedAddress.bill_from,
+                                                      bill_from_address_line_1:
+                                                        selectedAddress.address_line_1,
+                                                      bill_from_address_line_2:
+                                                        selectedAddress.address_line_2 ||
+                                                        "",
+                                                      bill_from_city:
+                                                        selectedAddress.city,
+                                                      bill_from_state:
+                                                        selectedAddress.state,
+                                                      bill_from_postal_code:
+                                                        selectedAddress.postal_code,
+                                                      bill_from_country:
+                                                        selectedAddress.country,
+                                                      bill_from_email:
+                                                        selectedAddress.email,
+                                                      bill_from_phone:
+                                                        selectedAddress.phone,
+                                                    }
+                                                  : null,
+                                              );
+                                            } else {
+                                              setTempEditValues((prevValues) =>
+                                                prevValues
+                                                  ? {
+                                                      ...prevValues,
+                                                      bill_from: selectedValue,
+                                                    }
+                                                  : null,
+                                              );
+                                            }
+                                          }}
+                                          className="mt-1 w-full rounded-md border border-gray-300 px-4 py-2 shadow-sm"
+                                        >
+                                          <option value="">
+                                            Select Bill From
+                                          </option>
+                                          {addresses.map((address) => (
+                                            <option
+                                              key={address.id}
+                                              value={address.bill_from}
+                                            >
+                                              {address.bill_from}
+                                            </option>
+                                          ))}
+                                        </select>
+                                      </div>
+
+                                      {renderEditableField(
+                                        "bill_from",
+                                        "Company/Name",
+                                        <Building className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_address_line_1",
+                                        "Address Line 1",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_address_line_2",
+                                        "Address Line 2",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_city",
+                                        "City",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_state",
+                                        "State",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_postal_code",
+                                        "Postal Code",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_country",
+                                        "Country",
+                                        <MapPin className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_email",
+                                        "Email",
+                                        <Mail className="h-5 w-5 text-gray-400" />,
+                                      )}
+                                      {renderEditableField(
+                                        "bill_from_phone",
+                                        "Phone",
+                                      )}
+                                    </div>
+                                    {isEditingStripeInvoice && (
+                                      <div className="mt- flex justify-end">
+                                        <button
+                                          type="submit"
+                                          className="rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                                        >
+                                          Save Changes
+                                        </button>
+                                      </div>
+                                    )}
+                                  </motion.div>
+                                ) : null}
+                              </div>
+
+
+                              {
+                                !isEditingStripeInvoice && (
+                                  <div>
+                                    <div key="date_of_issue" className="mb-4">
+                                      <label className="block text-sm font-medium text-gray-700">
+                                        Date of Issue{" "}
+                                        <span className="text-red-500">*</span>
+                                      </label>
+                                      <Popover
+                                        open={dateOfIssueOpen}
+                                        onOpenChange={setDateOfIssueOpen}
+                                      >
+                                        <PopoverTrigger asChild>
+                                          <button
+                                            type="button"
+                                            className={`w-full rounded-md px-4 py-2 text-left shadow-sm ${
+                                              errors["date_of_issue"]
+                                                ? "border-red-500"
+                                                : "border-gray-300"
+                                            } border`}
+                                            onClick={() =>
+                                              setDateOfIssueOpen(true)
+                                            }
+                                          >
+                                            {tempEditValues?.date_of_issue
+                                              ? format(
+                                                  new Date(
+                                                    tempEditValues.date_of_issue,
+                                                  ),
+                                                  "PPP",
+                                                )
+                                              : "Pick a date"}
+                                          </button>
+                                        </PopoverTrigger>
+                                        <PopoverContent
+                                          className="w-auto p-0"
+                                          align="start"
+                                        >
+                                          <Calendar
+                                            mode="single"
+                                            selected={
+                                              tempEditValues?.date_of_issue
+                                                ? new Date(
+                                                    tempEditValues.date_of_issue,
+                                                  )
+                                                : undefined
+                                            }
+                                            onSelect={(newDate) => {
+                                              handleInputChange(
+                                                "date_of_issue",
+                                                newDate || new Date(),
+                                              );
+                                              setDateOfIssueOpen(false);
+                                            }}
+                                          />
+                                        </PopoverContent>
+                                      </Popover>
+                                      {errors["date_of_issue"] && (
+                                        <p className="mt-2 text-sm text-red-600">
+                                          {errors["date_of_issue"]}
+                                        </p>
+                                      )}
+                                    </div>
+
+                                    {/* Date Due Field */}
+                                    <div>
+                                      <label className="block text-sm font-medium text-gray-700">
+                                        Date Due{" "}
+                                        <span className="text-red-500">*</span>
+                                      </label>
+                                      <Popover
+                                        open={dateDueOpen}
+                                        onOpenChange={setDateDueOpen}
+                                      >
+                                        <PopoverTrigger asChild>
+                                          <button
+                                            type="button"
+                                            className={`w-full rounded-md px-4 py-2 text-left shadow-sm ${
+                                              errors["date_due"]
+                                                ? "border-red-500"
+                                                : "border-gray-300"
+                                            } border`}
+                                            onClick={() => setDateDueOpen(true)}
+                                          >
+                                            {tempEditValues?.date_due
+                                              ? format(
+                                                  new Date(
+                                                    tempEditValues.date_due,
+                                                  ),
+                                                  "PPP",
+                                                )
+                                              : "Pick a date"}
+                                          </button>
+                                        </PopoverTrigger>
+                                        <PopoverContent
+                                          className="w-auto p-0"
+                                          align="start"
+                                        >
+                                          <Calendar
+                                            mode="single"
+                                            selected={
+                                              tempEditValues?.date_due
+                                                ? new Date(
+                                                    tempEditValues.date_due,
+                                                  )
+                                                : undefined
+                                            }
+                                            onSelect={(newDate) => {
+                                              handleInputChange(
+                                                "date_due",
+                                                newDate || new Date(),
+                                              );
+                                              setDateDueOpen(false);
+                                            }}
+                                          />
+                                        </PopoverContent>
+                                      </Popover>
+                                      {errors["date_due"] && (
+                                        <p className="mt-2 text-sm text-red-600">
+                                          {errors["date_due"]}
+                                        </p>
+                                      )}
+                                    </div>
+                                  </div>
+                                )}

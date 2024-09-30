@@ -1,0 +1,1044 @@
+ {activeTab === "description" && (
+                      <motion.div
+                        key="description"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className=""
+                      >
+                        <div className="space-y-4 p-4">
+                          <div className="flex items-center justify-between">
+                            <h2 className="text-lg font-bold">Item Table</h2>
+                          </div>
+
+                          {/* Table */}
+                          <Table className="min-w-full border-collapse border border-gray-300">
+                            <TableHeader>
+                              <TableRow className="bg-gray-100">
+                                <TableHead className="border border-gray-300 p-2 text-left"></TableHead>
+                                <TableHead className="border border-gray-300 p-2 text-left">
+                                  ITEM DETAILS
+                                </TableHead>
+                                <TableHead className="border border-gray-300 p-2 text-left">
+                                  QUANTITY
+                                </TableHead>
+                                <TableHead className="border border-gray-300 p-2 text-left">
+                                  UNIT PRICE
+                                </TableHead>
+                                <TableHead className="border border-gray-300 p-2 text-left">
+                                  SUBTOTAL
+                                </TableHead>
+                              </TableRow>
+                            </TableHeader>
+
+                            <TableBody>
+                              <TableRow>
+                                <TableCell className="border border-gray-300 p-2 text-center">
+                                  <input type="checkbox" />
+                                </TableCell>
+                                <TableCell className="border border-gray-300 p-2">
+                                  <div className="flex items-center space-x-2">
+                                    <HandIcon className="h-4 w-4" />
+                                    <Input placeholder="Type or click to select an item" />
+                                  </div>
+                                </TableCell>
+                                <TableCell className="border border-gray-300 p-2">
+                                  <Input
+                                    type="number"
+                                    defaultValue="1.00"
+                                    className="w-full"
+                                  />
+                                </TableCell>
+                                <TableCell className="border border-gray-300 p-2">
+                                  <Input
+                                    type="number"
+                                    defaultValue="0.00"
+                                    className="w-full"
+                                  />
+                                </TableCell>
+                                <TableCell className="border border-gray-300 p-2 text-right">
+                                  0.00
+                                </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+
+                          <div className="flex space-x-2">
+                            <Button
+                              variant="outline"
+                              className="flex items-center space-x-2"
+                            >
+                              <ExpandIcon className="h-4 w-4" />
+                              <span>Add New Item</span>
+                            </Button>
+
+                            <Button className="flex items-center space-x-2">
+                              <DeleteIcon className="h-4 w-4" />
+                              <span>Delete Selected</span>
+                            </Button>
+                          </div>
+
+                          <div className="flex items-end justify-end space-x-3">
+                            <div className="flex-1">
+                              <Label htmlFor="customer-notes">
+                                Customer Notes
+                              </Label>
+                              <Textarea
+                                id="customer-notes"
+                                placeholder="Thanks for your business."
+                                className="mt-2 w-full rounded-lg border p-3"
+                              />
+                              <p className="mt-1 text-sm text-gray-500">
+                                Will be displayed on the invoice
+                              </p>
+                            </div>
+
+                            <div className="w-full space-y-6 rounded-lg border bg-gray-50 p-5 md:w-2/5">
+                              <div className="space-y-4">
+                                <div className="flex items-center space-x-4">
+                                  <Label htmlFor="discount" className="flex-1">
+                                    Discount
+                                  </Label>
+                                  <Input
+                                    id="discount"
+                                    type="number"
+                                    placeholder="0"
+                                    className="w-20 rounded-lg border p-2 text-center"
+                                  />
+                                  <span className="text-gray-600">%</span>
+                                  <span className="ml-auto text-gray-800">
+                                    0.00
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center space-x-2">
+                                  <Label
+                                    htmlFor="payment_status"
+                                    className="text-gray-700"
+                                  >
+                                    Payment Status
+                                  </Label>
+                                </div>
+
+                                <div className="flex items-center space-x-2">
+                                  <input
+                                    id="payment_status"
+                                    type="checkbox"
+                                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                  />
+                                  <Label
+                                    htmlFor="payment_status"
+                                    className="text-gray-700"
+                                  >
+                                    Paid
+                                  </Label>
+                                </div>
+                              </div>
+
+                              <div>
+                                <Label htmlFor="currency">Currency</Label>
+                                <select
+                                  id="currency"
+                                  className="mt-1 w-full rounded-lg border bg-white p-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+                                >
+                                  <option value="USD">USD</option>
+                                </select>
+                              </div>
+
+                              <div className="border-t pt-4">
+                                <div className="flex items-center justify-between">
+                                  <h3 className="text-lg font-semibold">
+                                    Total
+                                  </h3>
+                                  <span className="text-lg font-semibold text-gray-800">
+                                    0.00
+                                  </span>
+                                </div>
+                                <div className="mt-2 flex items-center justify-between text-lg font-bold">
+                                  <span>Amount Due (₹)</span>
+                                  <span className="text-lg">0.00</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+I have this Instaed of 
+
+// OLD DESCRIPTION SECTION
+
+//  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+//    <div className="col-span-2">
+//      <label
+//        htmlFor="description"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Description <span className="text-red-500">*</span>
+//      </label>
+//      <textarea
+//        id="description"
+//        value={formData.description || ""}
+//        onChange={handleInputChange}
+//        className="w-full rounded-lg border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
+//        rows={3}
+//        placeholder="Enter item description..."
+//      />
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="quantity"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Quantity <span className="text-red-500">*</span>
+//      </label>
+//      <div className="relative">
+//        <Package className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+//        <input
+//          id="quantity"
+//          type="number"
+//          value={formData.quantity || ""}
+//          onChange={handleInputChange}
+//          className="w-full rounded-lg border py-2 pl-10 pr-3 text-gray-700 focus:border-blue-500 focus:outline-none"
+//          placeholder="Enter quantity"
+//        />
+//      </div>
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="unit_price"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Unit Price <span className="text-red-500">*</span>
+//      </label>
+//      <div className="relative">
+//        <DollarSign className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+//        <input
+//          id="unit_price"
+//          type="text"
+//          value={formData.unit_price || ""}
+//          onChange={handleInputChange}
+//          className="w-full rounded-lg border py-2 pl-10 pr-3 text-gray-700 focus:border-blue-500 focus:outline-none"
+//          placeholder="Enter unit price"
+//        />
+//      </div>
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="subtotal"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Subtotal
+//      </label>
+//      <input
+//        id="subtotal"
+//        type="text"
+//        value={formData.subtotal || ""}
+//        className="w-full rounded-lg border bg-gray-100 px-3 py-2 text-gray-700"
+//        readOnly
+//      />
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="discount"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Discount %
+//      </label>
+//      <div className="relative">
+//        <Percent className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+//        <input
+//          id="discount"
+//          type="text"
+//          value={formData.discount || ""}
+//          onChange={handleInputChange}
+//          className="w-full rounded-lg border py-2 pl-10 pr-3 text-gray-700 focus:border-blue-500 focus:outline-none"
+//          placeholder="Enter discount percentage"
+//        />
+//      </div>
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="total"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Total
+//      </label>
+//      <input
+//        id="total"
+//        type="text"
+//        value={formData.total || ""}
+//        className="w-full rounded-lg border bg-gray-100 px-3 py-2 text-gray-700"
+//        readOnly
+//      />
+//    </div>
+
+//    <div>
+//      <label
+//        htmlFor="amount_due"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Amount Due
+//      </label>
+//      <div className="relative">
+//        <ShoppingCart className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+//        <input
+//          id="amount_due"
+//          type="text"
+//          value={formData.amount_due || ""}
+//          className="w-full rounded-lg border bg-gray-100 py-2 pl-10 pr-3 font-semibold text-gray-700"
+//          readOnly
+//        />
+//      </div>
+//    </div>
+//    {/* Paid Manually Checkbox */}
+//    <div className="flex items-center space-x-2">
+//      <Checkbox
+//        id="paidmanual"
+//        checked={formData.paidmanual}
+//        onCheckedChange={(checked) => {
+//          setFormData((prev) => ({
+//            ...prev,
+//            paidmanual: checked === true,
+//          }));
+//        }}
+//      />
+//      <label htmlFor="paidmanual" className="leading-none">
+//        Mark as Paid
+//      </label>
+//    </div>
+
+//    {/* Currency Selection */}
+//    <div className="w-full max-w-xs">
+//      <label
+//        htmlFor="currency"
+//        className="mb-1 block text-sm font-medium text-gray-700"
+//      >
+//        Currency
+//      </label>
+//      <select
+//        id="currency"
+//        name="currency"
+//        value={formData.currency || ""}
+//        onChange={handleSelectChange}
+//        className="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+//      >
+//        <option value="">Select a currency</option>
+//        {Object.entries(currencySymbols).map(([code, symbol]) => (
+//          <option key={code} value={code}>
+//            {code} ({symbol})
+//          </option>
+//        ))}
+//      </select>
+//    </div>
+//  </div>
+
+Now what i wanna do is i have modified the the backend to create and edit invoices instead of 
+previously putting Quantity,Description , unit_price , subtotal i have shifted it to a jsonB data named 
+Items which looks like :
+{
+  "date_of_issue": "2024-09-17T20:00:00+00:00",
+  "date_due": "2024-10-01T20:00:00+00:00",
+  "bill_from": "Company A",
+  "bill_from_address_line_1": "123 Main St",
+  "bill_from_postal_code": "10001",
+  "bill_from_city": "Metropolis",
+  "bill_from_country": "USA",
+  "bill_from_email": "contact@companya.com",
+  "bill_from_phone": "+1-555-1234",
+  "bill_to": "Company B",
+  "bill_to_address_line_1": "456 Elm St",
+  "bill_to_postal_code": "10002",
+  "bill_to_city": "Gotham",
+  "bill_to_country": "USA",
+  "bill_to_email": "billing@companyb.com",
+  "bill_to_phone": "+1-555-5678",
+  "discount": "20%",
+  "total": "2400.00",
+  "amount_due": "2400.00",
+  "currency": "USD",
+  "paidmanual": true,
+  "thankyou_note": "HALALUIYAAA",
+  "items": [
+    {
+      "description": "Consulting Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    },
+    {
+      "description": "Other Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    },
+    {
+      "description": "Some Other Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    }
+  ]
+}
+
+and the put method looks like :
+{
+  "discount": "10%",
+  "total": "2700.00",
+  "amount_due": "2700.00",
+  "currency": "USD",
+  "paidmanual": true,
+  "thankyou_note": "HALALUIYAAA",
+  "items": [
+    {
+      "description": "Consulting Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    },
+    {
+      "description": "Other Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    },
+    {
+      "description": "Some Other Services",
+      "quantity": 5,
+      "unit_price": 200.0,
+      "subtotal": 1000.0
+    }
+  ]
+}
+
+i want to send this in the table where active tab === description 
+so i need to make a lot of changes in the frontend as 
+:
+export interface InvoiceFormData {
+  date_of_issue: string | undefined;
+  date_due: string | undefined;
+  bill_from: string | undefined;
+  bill_from_address_line_1: string | undefined;
+  bill_from_address_line_2: string | undefined;
+  bill_from_city: string | undefined;
+  bill_from_state: string | undefined;
+  bill_from_postal_code: string | undefined;
+  bill_from_country: string | undefined;
+  bill_from_email: string | undefined;
+  bill_from_phone: string | undefined;
+  bill_to: string | undefined;
+  bill_to_address_line_1: string | undefined;
+  bill_to_address_line_2: string | undefined;
+  bill_to_city: string | undefined;
+  bill_to_state: string | undefined;
+  bill_to_postal_code: string | undefined;
+  bill_to_country: string | undefined;
+  bill_to_email: string | undefined;
+  bill_to_phone: string | undefined;
+  description: string;
+  quantity: number;
+  unit_price: string;
+  subtotal: string;
+  discount: string | undefined;
+  total: string;
+  amount_due: string;
+  currency: string | undefined;
+  paidmanual: boolean;
+}
+
+ const [formData, setFormData] = useState<InvoiceFormData>({
+    date_of_issue: undefined,
+    date_due: undefined,
+    bill_from: undefined,
+    bill_from_address_line_1: undefined,
+    bill_from_address_line_2: undefined,
+    bill_from_city: undefined,
+    bill_from_state: undefined,
+    bill_from_postal_code: undefined,
+    bill_from_country: undefined,
+    bill_from_email: undefined,
+    bill_from_phone: undefined,
+    bill_to: undefined,
+    bill_to_address_line_1: undefined,
+    bill_to_address_line_2: undefined,
+    bill_to_city: undefined,
+    bill_to_state: undefined,
+    bill_to_postal_code: undefined,
+    bill_to_country: undefined,
+    bill_to_email: undefined,
+    bill_to_phone: undefined,
+    description: "",
+    quantity: 1,
+    unit_price: "",
+    subtotal: "",
+    discount: "",
+    total: "",
+    amount_due: "",
+    currency: "",
+    paidmanual: false,
+  });
+
+and also 
+const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { id, value } = e.target;
+
+    setFormData((prevState) => {
+      let numericValue: string | number = value;
+
+      if (id === "bill_to_country" || id === "bill_from_country") {
+        const selectedCountry = countries.find((c) => c.code === value);
+
+        if (id === "bill_to_country") {
+          const updatedToPhone = selectedCountry
+            ? `+${selectedCountry.phone}`
+            : prevState.bill_to_phone;
+          return {
+            ...prevState,
+            bill_to_country: value,
+            bill_to_phone: updatedToPhone,
+          };
+        }
+
+        if (id === "bill_from_country") {
+          const updatedFromPhone = selectedCountry
+            ? `+${selectedCountry.phone}`
+            : prevState.bill_from_phone;
+          return {
+            ...prevState,
+            bill_from_country: value,
+            bill_from_phone: updatedFromPhone,
+          };
+        }
+      }
+
+      if (id === "bill_from_phone") {
+        const currentCountry = countries.find(
+          (c) => c.code === prevState.bill_from_country,
+        );
+        const countryCode = currentCountry ? `+${currentCountry.phone}` : "";
+
+        const localNumber = value.replace(countryCode, "");
+        return {
+          ...prevState,
+          bill_from_phone: `${countryCode}${localNumber}`,
+        };
+      }
+
+      if (id === "bill_to_phone") {
+        const currentCountry = countries.find(
+          (c) => c.code === prevState.bill_to_country,
+        );
+        const countryCode = currentCountry ? `+${currentCountry.phone}` : "";
+
+        const localNumber = value.replace(countryCode, "");
+        return {
+          ...prevState,
+          bill_to_phone: `${countryCode}${localNumber}`,
+        };
+      }
+
+      if (id === "quantity") {
+        numericValue = Number(value);
+        if (numericValue < 0) {
+          numericValue = 0;
+        }
+      }
+
+      if (id === "discount") {
+        let cleanValue = value.replace("%", "").trim();
+
+        if (cleanValue === "") {
+          numericValue = "";
+        } else {
+          let discountNumber = parseInt(cleanValue, 10);
+          if (isNaN(discountNumber)) {
+            return prevState;
+          }
+          if (discountNumber < 0) {
+            discountNumber = 0;
+          } else if (discountNumber > 100) {
+            discountNumber = 100;
+          }
+
+          numericValue = `${discountNumber}%`;
+        }
+      }
+
+      let updatedFormData = {
+        ...prevState,
+        [id]: numericValue,
+      };
+
+      if (id === "quantity" || id === "unit_price") {
+        const quantity = updatedFormData.quantity || 0;
+        const unitPrice = parseFloat(updatedFormData.unit_price || "0");
+        updatedFormData.subtotal = (quantity * unitPrice).toFixed(2);
+      }
+
+      if (id === "discount" || id === "subtotal") {
+        const subtotal = parseFloat(updatedFormData.subtotal || "0");
+        const discountStr = updatedFormData.discount as string;
+        const discount = discountStr
+          ? parseInt(discountStr.replace("%", ""), 10)
+          : 0;
+        const total = subtotal - subtotal * (discount / 100);
+        updatedFormData.total = total.toFixed(2);
+        updatedFormData.amount_due = total.toFixed(2);
+      }
+
+      return updatedFormData;
+    });
+  };
+
+  ASLO CHANGE THIS 
+    const isCurrentTabValid = () => {
+    const tabFields = {
+      bill_from: [
+        "date_of_issue",
+        "date_due",
+        "bill_from",
+        "bill_from_address_line_1",
+        "bill_from_city",
+        "bill_from_state",
+        "bill_from_postal_code",
+        "bill_from_country",
+        "bill_from_email",
+        "bill_from_phone",
+      ],
+      bill_to: [
+        "bill_to",
+        "bill_to_address_line_1",
+        "bill_to_city",
+        "bill_to_state",
+        "bill_to_postal_code",
+        "bill_to_country",
+        "bill_to_email",
+        "bill_to_phone",
+      ],
+      description: ["description", "quantity", "unit_price"],
+      is_paid: ["is_paid"],
+    };
+
+    const fieldsToCheck = tabFields[activeTab as keyof typeof tabFields] || [];
+
+    return fieldsToCheck.every((field) => {
+      const value = formData[field as keyof typeof formData];
+      return value !== undefined && value !== null && value !== "";
+    });
+  };
+  const handleNext = () => {
+    if (isCurrentTabValid()) {
+      switch (activeTab) {
+        case "dates":
+          setActiveTab("bill_from");
+          break;
+        case "bill_from":
+          setActiveTab("bill_to");
+          break;
+        case "bill_to":
+          setActiveTab("description");
+          break;
+        case "description":
+          setActiveTab("is_paid");
+          break;
+        default:
+          break;
+      }
+    } else {
+      toast.error("Please fill in all fields on this tab before proceeding.");
+    }
+  };
+  const handleBack = () => {
+    switch (activeTab) {
+      case "bill_from":
+        setActiveTab("dates");
+        break;
+      case "bill_to":
+        setActiveTab("bill_from");
+        break;
+      case "description":
+        setActiveTab("bill_to");
+        break;
+      case "is_paid":
+        setActiveTab("description");
+        break;
+      default:
+        break;
+    }
+  };
+
+  AND VALIDATION ALSO 
+  import { toast } from "sonner";
+
+interface InvoiceFormData {
+  date_of_issue: string | undefined;
+  date_due: string | undefined;
+  bill_from: string | undefined;
+  bill_from_address_line_1: string | undefined;
+  bill_from_address_line_2: string | undefined;
+  bill_from_city: string | undefined;
+  bill_from_state: string | undefined;
+  bill_from_postal_code: string | undefined;
+  bill_from_country: string | undefined;
+  bill_from_email: string | undefined;
+  bill_from_phone: string | undefined;
+  bill_to: string | undefined;
+  bill_to_address_line_1: string | undefined;
+  bill_to_address_line_2: string | undefined;
+  bill_to_city: string | undefined;
+  bill_to_state: string | undefined;
+  bill_to_postal_code: string | undefined;
+  bill_to_country: string | undefined;
+  bill_to_email: string | undefined;
+  bill_to_phone: string | undefined;
+  description: string;
+  quantity: number;
+  unit_price: string;
+  subtotal: string;
+  discount: string | undefined;
+  total: string;
+  amount_due: string;
+  currency: string | undefined;
+  paidmanual: boolean;
+}
+
+const validateInvoiceCreate = (
+  formData: InvoiceFormData,
+): { isValid: boolean; errors: { [key: string]: string } } => {
+  const errors: { [key: string]: string } = {};
+  let isValid = true;
+
+  const requiredFields = [
+    "date_of_issue",
+    "date_due",
+    "bill_from",
+    "bill_from_address_line_1",
+    "bill_from_city",
+    "bill_from_state",
+    "bill_from_postal_code",
+    "bill_from_country",
+    "bill_from_email",
+    "bill_from_phone",
+    "bill_to",
+    "bill_to_address_line_1",
+    "bill_to_city",
+    "bill_to_state",
+    "bill_to_postal_code",
+    "bill_to_country",
+    "bill_to_email",
+    "bill_to_phone",
+    "description",
+    "quantity",
+    "unit_price",
+    "subtotal",
+    "total",
+    "amount_due",
+    "currency",
+  ];
+
+  requiredFields.forEach((field) => {
+    const value = formData[field as keyof InvoiceFormData];
+    if (value === undefined || value === null || value === "") {
+      errors[field] = `${field.replace(/_/g, " ")} is required`;
+      isValid = false;
+    }
+  });
+
+  const optionalFields = [
+    "bill_from_address_line_2",
+    "bill_to_address_line_2",
+    "discount",
+  ];
+  optionalFields.forEach((field) => {
+    if (field in formData) {
+      const value = formData[field as keyof InvoiceFormData];
+      if (value !== undefined && value !== null && value !== "") {
+        if (field === "discount") {
+          const discountPattern = /^[0-9]+(\.[0-9]{1,2})?%$/;
+          if (!discountPattern.test(value as string)) {
+            errors[field] =
+              "Discount must be a valid percentage (e.g., 10% or 10.5%)";
+            isValid = false;
+          }
+        }
+      }
+    }
+  });
+
+  if (formData.date_due && formData.date_of_issue) {
+    const dateDue = new Date(formData.date_due);
+    const dateOfIssue = new Date(formData.date_of_issue);
+
+    if (dateDue < dateOfIssue) {
+      errors.date_due = "Date due cannot be earlier than the date of issue.";
+      isValid = false;
+    }
+    if (dateOfIssue > dateDue) {
+      errors.date_of_issue = "Date of issue cannot be later than the date due.";
+      isValid = false;
+    }
+  }
+
+  if (!isValid) {
+    toast.error("Please correct the errors in the form before submitting.");
+  }
+
+  return { isValid, errors };
+};
+
+export default validateInvoiceCreate;
+
+
+
+
+1 TO ACCEPT THESE VALUES AND CREATE A INVOICE 
+2 THE READ CHANGES TO DISPLAY FROM THE JSON B PROPERLY 
+3 THEN PUT OR EDIT CHANGES FOR THE SAME
+
+
+npx supabase gen types --lang=typescript --project-id tzkznqxojcjwimivhuci --schema public > types_db.ts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <CardContent>
+              <div className="flex justify-center">
+                <svg width="200" height="200" viewBox="0 0 200 200">
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    stroke="#e2e8f0"
+                    strokeWidth="30"
+                  />
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    stroke="#f59e0b"
+                    strokeWidth="30"
+                    strokeDasharray="502"
+                    strokeDashoffset="291.16"
+                    transform="rotate(-90 100 100)"
+                  />
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    stroke="#3b82f6"
+                    strokeWidth="30"
+                    strokeDasharray="502"
+                    strokeDashoffset="401.6"
+                    transform="rotate(-90 100 100)"
+                  />
+                  <circle
+                    cx="100"
+                    cy="100"
+                    r="80"
+                    fill="none"
+                    stroke="#10b981"
+                    strokeWidth="30"
+                    strokeDasharray="502"
+                    strokeDashoffset="451.8"
+                    transform="rotate(-90 100 100)"
+                  />
+                  <text
+                    x="100"
+                    y="100"
+                    textAnchor="middle"
+                    dy="0.3em"
+                    className="text-xl font-bold"
+                  >
+                    Paid
+                  </text>
+                  <text
+                    x="100"
+                    y="120"
+                    textAnchor="middle"
+                    dy="0.3em"
+                    className="text-lg"
+                  >
+                    42%
+                  </text>
+                </svg>
+              </div>
+              <div className="mt-4 flex justify-center space-x-4">
+                <div className="flex items-center">
+                  <div className="mr-2 h-4 w-4 rounded-full bg-[#f59e0b]"></div>
+                  <span>Paid 42%</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-2 h-4 w-4 rounded-full bg-[#3b82f6]"></div>
+                  <span>Pending 32%</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-2 h-4 w-4 rounded-full bg-[#10b981]"></div>
+                  <span>Draft 13%</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="mr-2 h-4 w-4 rounded-full bg-[#4b5563]"></div>
+                  <span>Overdue 10%</span>
+                </div>
+              </div>
+            </CardContent>
+
+
+
+                        <div className="mb-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <StatCard
+                title="Manual Emails Sent"
+                value={manualEmailSent}
+                icon={Mail}
+              />
+              <StatCard
+                title="Stripe Emails Sent"
+                value={stripeEmailSent}
+                icon={Mail}
+              />
+              <StatCard
+                title="Saved From Addresses"
+                value={savedFromAddress}
+                icon={MapPin}
+              />
+              <StatCard
+                title="Saved To Addresses"
+                value={savedToAddress}
+                icon={MapPin}
+              />
+              <StatCard
+                title="Manual Invoices"
+                value={manualInvoiceStats}
+                icon={FileText}
+              />
+              <StatCard
+                title="Stripe Invoices"
+                value={stripeInvoiceStats}
+                icon={FileText}
+              />
+            </div>
+
+
+                      <motion.div initial="initial" animate="animate">
+            <div className="mx-auto max-w-7xl">
+              {!isActiveOrTrialing ? (
+                <motion.div
+                  className="rounded-2xl bg-white p-8 text-center shadow-xl"
+                  variants={fadeIn}
+                >
+                  <h2 className="mb-4 text-3xl font-bold text-indigo-600">
+                    No Active Subscription
+                  </h2>
+                  <p className="mb-8 text-xl text-gray-600">
+                    Subscribe now to unlock all features and enhance your
+                    experience!
+                  </p>
+                  <div className="flex justify-center space-x-4">
+                    <motion.button
+                      onClick={subscribeModal.onOpen}
+                      className="flex items-center rounded-lg bg-indigo-500 px-6 py-3 text-white transition duration-300 hover:bg-indigo-600"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Start Trial <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.button>
+                    <motion.button
+                      onClick={() => router.push(viewPlansUrl)}
+                      className="flex items-center rounded-lg bg-blue-500 px-6 py-3 text-white transition duration-300 hover:bg-blue-600"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      View Plans <ArrowRight className="ml-2 h-5 w-5" />
+                    </motion.button>
+                  </div>
+                </motion.div>
+              ) : (
+                <div>
+                  <motion.h1
+                    className="mb-12 text-center text-4xl font-bold text-indigo-800"
+                    variants={fadeIn}
+                  >
+                    Welcome, {userDetails?.full_name || "Valued Customer"}
+                  </motion.h1>
+
+                  <motion.div
+                    className={`mb-12 rounded-2xl p-8 shadow-lg ${
+                      isActiveOrTrialing
+                        ? "bg-gradient-to-br from-green-100 to-yellow-300"
+                        : "bg-gradient-to-br from-red-100 to-pink-200"
+                    }`}
+                    variants={fadeIn}
+                  >
+                    <div className="text-center">
+                      <p className="mb-4 text-2xl font-semibold text-gray-800">
+                        Your {isActiveOrTrialing ? "Active" : "Inactive"}{" "}
+                        Subscription
+                      </p>
+                      <p className="mb-4 text-3xl font-bold text-indigo-600">
+                        {formatPrice({
+                          unit_amount: subscriptionAmount as number,
+                          //@ts-ignore
+                          currency: subscriptionCurrency as
+                            | string
+                            | undefined,
+                        })}{" "}
+                        / month
+                      </p>
+                      <p className="text-xl text-gray-600">
+                        {isActiveOrTrialing ? (
+                          <motion.span
+                            className="flex items-center justify-center"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <Check className="mr-2 h-6 w-6 text-green-500" />
+                            Enjoy your services and explore all the features
+                            available to you!
+                          </motion.span>
+                        ) : (
+                          <motion.span
+                            className="flex items-center justify-center"
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <X className="mr-2 h-6 w-6 text-red-500" />
+                            Your subscription status is:{" "}
+                            {subscriptionStatus}. You may need to renew or
+                            update your subscription.
+                          </motion.span>
+                        )}
+                      </p>
+                      <div className="mx-auto flex flex-col items-center justify-center">
+                        <ul className="mt-2">
+                          <li>
+                            <span className="font-semibold">Status:</span>{" "}
+                            {subscriptionStatus || "Inactive"}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                  
